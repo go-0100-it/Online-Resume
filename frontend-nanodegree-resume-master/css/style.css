@@ -17,6 +17,7 @@ h6 {
 #main {
     max-width: 1300px;
     margin: 0 auto;
+    height: 100%;
 }
 
 .clear-fix {
@@ -134,10 +135,18 @@ a {
     background-color: #4a4a4a;
 }
 
+.white {
+    background-color: #fff;
+}
+
 
 /* TODO: Replace with image later */
 
 #header {
+    background-color: #2f2f2f;
+}
+
+#header-container {
     background-color: #484848;
 }
 
@@ -158,7 +167,7 @@ a {
 }
 
 .center-content {
-    padding: 2.5% 5%;
+    padding: 40px 50px;
 }
 
 ul {
@@ -176,12 +185,32 @@ img {
     padding: 10px;
 }
 
+.img-200x100 {
+    width: 200px;
+    height: 100px;
+}
+
 span {
     padding: 5px;
 }
 
 #lets-connect {
     text-align: center;
+}
+
+.spacer {
+    width: 100%;
+    height: 400px;
+}
+
+#mapDiv {
+    height: 600px;
+    width: 100%;
+    padding-bottom: 5%;
+}
+
+#scroll-spacer {
+    background-color: transparent;
 }
 
 
