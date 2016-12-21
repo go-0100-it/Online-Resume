@@ -1,5 +1,5 @@
 // init ScrollMagic Controller
-var controller = new ScrollMagic.Controller();
+var controller = new ScrollMagic.Controller({refreshInterval: 0.1});
 
 $("#scroll-spacer").height($("#mapDiv").height() * 2);
 
@@ -147,37 +147,37 @@ var projects = {
         "title": "Project 1",
         "dates": "March 2016", //(works with a hyphen between them)  
         "description": "This was my favorite project.",
-        "images": ["http://lorempixel.com/g/204/100", "http://lorempixel.com/g/205/101", "http://lorempixel.com/g/206/102", "http://lorempixel.com/g/207/103"] // urls
+        "images": ["images/placeholder.jpg", "images/placeholder.jpg", "images/placeholder.jpg", "images/placeholder.jpg"] // urls
     }, {
         "title": "string",
         "dates": "string", //(works with a hyphen between them)  
         "description": "string",
-        "images": ["http://lorempixel.com/g/204/100", "http://lorempixel.com/g/201/100", "http://lorempixel.com/g/202/100", "http://lorempixel.com/g/203/100"] // urls
+        "images": ["images/placeholder.jpg", "images/placeholder.jpg", "images/placeholder.jpg", "images/placeholder.jpg"] // urls
     }, {
         "title": "string",
         "dates": "string", //(works with a hyphen between them)  
         "description": "string",
-        "images": ["http://lorempixel.com/g/200/100", "http://lorempixel.com/g/200/101", "http://lorempixel.com/g/200/102", "http://lorempixel.com/g/200/103"] // urls
+        "images": ["images/placeholder.jpg", "images/placeholder.jpg", "images/placeholder.jpg", "images/placeholder.jpg"] // urls
     }, {
         "title": "string",
         "dates": "string", //(works with a hyphen between them)  
         "description": "string",
-        "images": ["http://lorempixel.com/g/200/100", "http://lorempixel.com/g/200/100", "http://lorempixel.com/g/200/100", "http://lorempixel.com/g/200/100"] // urls
+        "images": ["images/placeholder.jpg", "images/placeholder.jpg", "images/placeholder.jpg", "images/placeholder.jpg"] // urls
     }, {
         "title": "string",
         "dates": "string", //(works with a hyphen between them)  
         "description": "string",
-        "images": ["http://lorempixel.com/g/200/100", "http://lorempixel.com/g/200/100", "http://lorempixel.com/g/200/100", "http://lorempixel.com/g/200/100"] // urls
+        "images": ["images/placeholder.jpg", "images/placeholder.jpg", "images/placeholder.jpg", "images/placeholder.jpg"] // urls
     }, {
         "title": "string",
         "dates": "string", //(works with a hyphen between them)  
         "description": "string",
-        "images": ["http://lorempixel.com/g/200/100", "http://lorempixel.com/g/200/100", "http://lorempixel.com/g/200/100", "http://lorempixel.com/g/200/100"] // urls
+        "images": ["images/placeholder.jpg", "images/placeholder.jpg", "images/placeholder.jpg", "images/placeholder.jpg"] // urls
     }, {
         "title": "string",
         "dates": "string", //(works with a hyphen between them)  
         "description": "string",
-        "images": ["http://lorempixel.com/g/200/100", "http://lorempixel.com/g/200/100", "http://lorempixel.com/g/200/100", "http://lorempixel.com/g/200/100"] // urls
+        "images": ["images/placeholder.jpg", "images/placeholder.jpg", "images/placeholder.jpg", "images/placeholder.jpg"] // urls
     }],
     "display": function() {
         appendHTML(this, HTMLprojects, $("#projects"));
@@ -185,7 +185,7 @@ var projects = {
 }
 
 /**
- * A function to loop over an objects property keys and 
+ * A function to loop over an objects property keys and
  */
 function prependHTML(contentData, htmlStrings, pendElement) {
 
@@ -319,26 +319,27 @@ projects.display();
 education.display();
 $("#mapDiv").append(googleMap);
 
-var blockTween = new TweenMax.to('#header', 1.2, {
+
+var blockTween1 = new TweenMax.to('#header', 1.2, {
     backgroundColor: "#484848"
 });
 
-var containerScene = new ScrollMagic.Scene({
+var containerScene1 = new ScrollMagic.Scene({
         triggerElement: "#header",
         triggerHook: 0 // don't trigger until #pinned-trigger1 hits the top of the viewport
     })
-    .setTween(blockTween)
+    .setTween(blockTween1)
     .addTo(controller);
 
-var blockTween = new TweenMax.to('#header-container', 1.2, {
+var blockTween2 = new TweenMax.to('#header-container', 1.2, {
     backgroundColor: "#fff"
 });
 
-var containerScene = new ScrollMagic.Scene({
+var containerScene2 = new ScrollMagic.Scene({
         triggerElement: "#header",
         triggerHook: 0 // don't trigger until #pinned-trigger1 hits the top of the viewport
     })
-    .setTween(blockTween)
+    .setTween(blockTween2)
     .addTo(controller);
 
 // Scene Handler
@@ -346,36 +347,67 @@ var scene = new ScrollMagic.Scene({
         triggerElement: "#header", // point of execution
         duration: 0, // pin element for the window height - 1
         triggerHook: 0, // don't trigger until #pinned-trigger1 hits the top of the viewport
-        reverse: true // allows the effect to trigger when scrolled in the reverse direction
     })
     .setPin("#header") // the element we want to pin
 
 // Scene2 Handler
-new ScrollMagic.Scene({ triggerElement: "#trigger", duration: $("#workExperience").height() * 1.5, offset: $(window).height() / 2 - 110 })
+var scene2 = new ScrollMagic.Scene({
+        triggerElement: "#trigger",
+        duration: $("#workExperience").height() * 1.5,
+        offset: $(window).height() / 2 - 110
+    })
     .setPin("#workExperience")
     .addTo(controller);
 
 // Scene3 Handler
-new ScrollMagic.Scene({ triggerElement: "#trigger", duration: $("#projects").height() * 0.5, offset: $("#workExperience").height() * 2.5 + $(window).height() / 2 - 95 })
+var scene3 = new ScrollMagic.Scene({
+        triggerElement: "#trigger",
+        duration: $("#projects").height() * 0.5,
+        offset: $("#workExperience").height() * 2.5 + $(window).height() / 2 - 95
+    })
     .setPin("#projects")
     .addTo(controller);
 
 //Scene4 Handler
-new ScrollMagic.Scene({ triggerElement: "#trigger", duration: $("#education").height(), offset: $("#workExperience").height() * 2.5 + $("#projects").height() * 1.5 + $(window).height() / 2 - 90 })
+var scene4 = new ScrollMagic.Scene({
+        triggerElement: "#trigger",
+        duration: $("#education").height(),
+        offset: $("#workExperience").height() * 2.5 + $("#projects").height() * 1.5 + $(window).height() / 2 - 88
+    })
     .setPin("#education")
     .addTo(controller);
 
 // Scene5 Handler
-new ScrollMagic.Scene({ triggerElement: "#trigger", duration: 0, offset: $("#workExperience").height() * 2.5 + $("#projects").height() * 1.5 + $("#education").height() * 2 + $(window).height() / 2 - 85 })
+var scene5 = new ScrollMagic.Scene({
+        triggerElement: "#trigger",
+        duration: 0,
+        offset: $("#workExperience").height() * 2.5 + $("#projects").height() * 1.5 + $("#education").height() * 2 + $(window).height() / 2 - 88
+    })
     .setPin("#mapDiv")
     .addTo(controller);
 
 // Scene6 Handler
-new ScrollMagic.Scene({ triggerElement: "#trigger", duration: 0, offset: $("#workExperience").height() * 2.5 + $("#projects").height() * 1.5 + $("#education").height() * 2 + $(window).height() / 2 - 85 })
+var scene6 = new ScrollMagic.Scene({
+        triggerElement: "#trigger",
+        duration: 0,
+        offset: $("#workExperience").height() * 2.5 + $("#projects").height() * 1.5 + $("#education").height() * 2 + $(window).height() / 2 - 88
+    })
     .setPin("#lets-connect")
     .addTo(controller);
 
 // Add Scenes to ScrollMagic Controller
 controller.addScene([
-    scene,
+    scene
 ]);
+
+
+$(window).resize(function () {
+    scene.removePin();
+    scene.setPin("#header");
+    scene2.duration($("#workExperience").height() * 1.5).offset($(window).height() / 2 - 110);
+    scene3.duration($("#projects").height() * 0.5).offset($("#workExperience").height() * 2.5 + $(window).height() / 2 - 100);
+    scene4.duration($("#education").height()).offset($("#workExperience").height() * 2.5 + $("#projects").height() * 1.5 + $(window).height() / 2 - 100);
+    scene5.duration(0).offset($("#workExperience").height() * 2.5 + $("#projects").height() * 1.5 + $("#education").height() * 2 + $(window).height() / 2 - 130);
+    scene6.duration(0).offset($("#workExperience").height() * 2.5 + $("#projects").height() * 1.5 + $("#education").height() * 2 + $(window).height() / 2 - 130);
+  });
+
