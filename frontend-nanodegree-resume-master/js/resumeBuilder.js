@@ -1,14 +1,25 @@
-/*
-This is empty on purpose! Your code to build the resume will go here.
- */
+// init ScrollMagic Controller
+var controller = new ScrollMagic.Controller();
+
+$("#scroll-spacer").height($("#mapDiv").height() * 2);
+
+var myEl2height = $("#header").height();
+var elMarg = ($(window).height() - myEl2height) / 6;
+var myEl = $("#header-container");
+myEl.height($(window).height());
+myEl.css('margin-top', elMarg + 'px');
+
+// A function to check if an Object's property value or an Array's element value is an Array.
 var isArray = function(a) {
     return (!!a) && (a.constructor === Array);
 };
 
+// A function to check if an Object's property value or an Array's element value is an Object.
 var isObject = function(a) {
     return (!!a) && (a.constructor === Object);
 };
 
+// An Object literal defining biographical details of the person
 var bio = {
     "name": "Dave Waters",
     "role": "Android and Web Application Developer",
@@ -22,11 +33,12 @@ var bio = {
     "skills": ["HTML", "CSS", "JavaScript", "JSON", "Python", "Java", "XML"],
     "biopic": "images/bio_image.jpg",
     "display": function() {
-        prependHTML(bio, HTMLprependHeader, $("#header"));
-        appendHTML(bio, HTMLappendHeader, $("#header"));
+        prependHTML(this, HTMLprependHeader, $("#header"));
+        appendHTML(this, HTMLappendHeader, $("#header"));
     }
 }
 
+// An Object literal defining the person's education.
 var education = {
     "schools": [{
         "name": "Mohawk College",
@@ -87,59 +99,49 @@ var education = {
         "url": "string"
     }],
     "display": function() {
-        appendHTML(education, HTMLeducation, $("#education"));
+        appendHTML(this, HTMLeducation, $("#education"));
     }
 }
 
+// An Object literal defining the person's work history
 var work = {
     "jobs": [{
         "employer": "Toyota Motor Manufacturing Canada",
         "title": "Multi-skilled Team Leader",
-        "location": "Cambridge, Ontario CAN",
+        "location": "Cambridge, Ontario",
         "dates": "2008 - Present", //(Can be 'in progress')  
         "description": "string"
     }, {
         "employer": "Oakrun Bakery",
         "title": "Millwright",
-        "location": "string",
+        "location": "Ancaster, Ontario",
         "dates": "string", //(Can be 'in progress')  
         "description": "string"
     }, {
         "employer": "Wrigley Canada",
         "title": "Tab Wrapping Mechanic",
-        "location": "string",
+        "location": "Toronto, Ontario",
         "dates": "string", //(Can be 'in progress')  
         "description": "string"
     }, {
         "employer": "Patheon Pharmacutical",
         "title": "Packaging Group Leader",
-        "location": "string",
+        "location": "Burlington, Ontario",
         "dates": "string", //(Can be 'in progress')  
         "description": "string"
     }, {
         "employer": "Speciality Coatings Ltd.",
         "title": "Chemical Formulation Specialist",
-        "location": "string",
-        "dates": "string", //(Can be 'in progress')  
-        "description": "string"
-    }, {
-        "employer": "Some Other Place",
-        "title": "Some other title",
-        "location": "Some other place",
-        "dates": "Before - Some other time", //(Can be 'in progress')  
-        "description": "Lots of great other skills aquired and mastered."
-    }, {
-        "employer": "Speciality Coatings Ltd.",
-        "title": "Chemical Formulation Specialist",
-        "location": "string",
+        "location": "Brantford, Ontario",
         "dates": "string", //(Can be 'in progress')  
         "description": "string"
     }],
     "display": function() {
-        appendHTML(work, HTMLwork, $("#workExperience"));
+        appendHTML(this, HTMLwork, $("#workExperience"));
     }
 }
 
+// An Object literal defining the person's project history
 var projects = {
     "projects": [{
         "title": "Project 1",
@@ -150,7 +152,7 @@ var projects = {
         "title": "string",
         "dates": "string", //(works with a hyphen between them)  
         "description": "string",
-        "images": ["http://lorempixel.com/g/104/100", "http://lorempixel.com/g/101/100", "http://lorempixel.com/g/102/100", "http://lorempixel.com/g/103/100"] // urls
+        "images": ["http://lorempixel.com/g/204/100", "http://lorempixel.com/g/201/100", "http://lorempixel.com/g/202/100", "http://lorempixel.com/g/203/100"] // urls
     }, {
         "title": "string",
         "dates": "string", //(works with a hyphen between them)  
@@ -160,29 +162,31 @@ var projects = {
         "title": "string",
         "dates": "string", //(works with a hyphen between them)  
         "description": "string",
-        "images": ["http://lorempixel.com/g/100/100", "http://lorempixel.com/g/100/100", "http://lorempixel.com/g/100/100", "http://lorempixel.com/g/100/100"] // urls
+        "images": ["http://lorempixel.com/g/200/100", "http://lorempixel.com/g/200/100", "http://lorempixel.com/g/200/100", "http://lorempixel.com/g/200/100"] // urls
     }, {
         "title": "string",
         "dates": "string", //(works with a hyphen between them)  
         "description": "string",
-        "images": ["http://lorempixel.com/g/100/100", "http://lorempixel.com/g/100/100", "http://lorempixel.com/g/100/100", "http://lorempixel.com/g/100/100"] // urls
+        "images": ["http://lorempixel.com/g/200/100", "http://lorempixel.com/g/200/100", "http://lorempixel.com/g/200/100", "http://lorempixel.com/g/200/100"] // urls
     }, {
         "title": "string",
         "dates": "string", //(works with a hyphen between them)  
         "description": "string",
-        "images": ["http://lorempixel.com/g/100/100", "http://lorempixel.com/g/100/100", "http://lorempixel.com/g/100/100", "http://lorempixel.com/g/100/100"] // urls
+        "images": ["http://lorempixel.com/g/200/100", "http://lorempixel.com/g/200/100", "http://lorempixel.com/g/200/100", "http://lorempixel.com/g/200/100"] // urls
     }, {
         "title": "string",
         "dates": "string", //(works with a hyphen between them)  
         "description": "string",
-        "images": ["http://lorempixel.com/g/100/100", "http://lorempixel.com/g/100/100", "http://lorempixel.com/g/100/100", "http://lorempixel.com/g/100/100"] // urls
+        "images": ["http://lorempixel.com/g/200/100", "http://lorempixel.com/g/200/100", "http://lorempixel.com/g/200/100", "http://lorempixel.com/g/200/100"] // urls
     }],
     "display": function() {
-        appendHTML(projects, HTMLprojects, $("#projects"));
+        appendHTML(this, HTMLprojects, $("#projects"));
     }
 }
 
-
+/**
+ * A function to loop over an objects property keys and 
+ */
 function prependHTML(contentData, htmlStrings, pendElement) {
 
     var keysArray = Object.keys(htmlStrings);
@@ -193,6 +197,35 @@ function prependHTML(contentData, htmlStrings, pendElement) {
             pendElement.prepend(htmlStrings[key].replace("%data%", contentData[key]));
         } else {
             pendElement.prepend(htmlStrings[key]);
+        }
+    }
+}
+
+function objLoop(contentData, htmlStrings, pendElement) {
+
+    var keysArray = Object.keys(htmlStrings);
+    for (var i = 0; i < keysArray.length; i++) {
+
+        var key = keysArray[i];
+        if (contentData.hasOwnProperty(key)) {
+
+            if (isArray(contentData[key])) {
+                if (htmlStrings === HTMLeducation && i === 1) {
+                    pendElement.append(HTMLonlineClasses);
+                }
+                arrayLoop(contentData[key], htmlStrings[key], htmlStrings === HTMLappendHeader ? $("#skills") : pendElement);
+            } else if (isObject(contentData[key])) {
+                appendHTML(contentData[key], htmlStrings[key], htmlStrings === HTMLappendHeader ? $("#topContacts") : pendElement);
+            } else {
+                pendElement.append(htmlStrings[key].replace("%data%", contentData[key]));
+            }
+
+        } else {
+            if (contentData === bio) {
+                pendElement.append(htmlStrings[key]);
+            } else {
+                createBulkEntry(contentData, htmlStrings, pendElement);
+            }
         }
     }
 }
@@ -211,7 +244,7 @@ function appendHTML(contentData, htmlStrings, pendElement) {
                 }
                 arrayLoop(contentData[key], htmlStrings[key], htmlStrings === HTMLappendHeader ? $("#skills") : pendElement);
             } else if (isObject(contentData[key])) {
-                appendHTML(contentData[key], htmlStrings[key], htmlStrings == HTMLappendHeader ? $("#topContacts") : pendElement);
+                appendHTML(contentData[key], htmlStrings[key], htmlStrings === HTMLappendHeader ? $("#topContacts") : pendElement);
             } else {
                 pendElement.append(htmlStrings[key].replace("%data%", contentData[key]));
             }
@@ -220,7 +253,7 @@ function appendHTML(contentData, htmlStrings, pendElement) {
             if (contentData === bio) {
                 pendElement.append(htmlStrings[key]);
             } else {
-                createBulkEntry(contentData, htmlStrings, pendElement, key);
+                createBulkEntry(contentData, htmlStrings, pendElement);
             }
         }
     }
@@ -284,3 +317,65 @@ bio.display();
 work.display();
 projects.display();
 education.display();
+$("#mapDiv").append(googleMap);
+
+var blockTween = new TweenMax.to('#header', 1.2, {
+    backgroundColor: "#484848"
+});
+
+var containerScene = new ScrollMagic.Scene({
+        triggerElement: "#header",
+        triggerHook: 0 // don't trigger until #pinned-trigger1 hits the top of the viewport
+    })
+    .setTween(blockTween)
+    .addTo(controller);
+
+var blockTween = new TweenMax.to('#header-container', 1.2, {
+    backgroundColor: "#fff"
+});
+
+var containerScene = new ScrollMagic.Scene({
+        triggerElement: "#header",
+        triggerHook: 0 // don't trigger until #pinned-trigger1 hits the top of the viewport
+    })
+    .setTween(blockTween)
+    .addTo(controller);
+
+// Scene Handler
+var scene = new ScrollMagic.Scene({
+        triggerElement: "#header", // point of execution
+        duration: 0, // pin element for the window height - 1
+        triggerHook: 0, // don't trigger until #pinned-trigger1 hits the top of the viewport
+        reverse: true // allows the effect to trigger when scrolled in the reverse direction
+    })
+    .setPin("#header") // the element we want to pin
+
+// Scene2 Handler
+new ScrollMagic.Scene({ triggerElement: "#trigger", duration: $("#workExperience").height() * 1.5, offset: $(window).height() / 2 - 110 })
+    .setPin("#workExperience")
+    .addTo(controller);
+
+// Scene3 Handler
+new ScrollMagic.Scene({ triggerElement: "#trigger", duration: $("#projects").height() * 0.5, offset: $("#workExperience").height() * 2.5 + $(window).height() / 2 - 95 })
+    .setPin("#projects")
+    .addTo(controller);
+
+//Scene4 Handler
+new ScrollMagic.Scene({ triggerElement: "#trigger", duration: $("#education").height(), offset: $("#workExperience").height() * 2.5 + $("#projects").height() * 1.5 + $(window).height() / 2 - 90 })
+    .setPin("#education")
+    .addTo(controller);
+
+// Scene5 Handler
+new ScrollMagic.Scene({ triggerElement: "#trigger", duration: 0, offset: $("#workExperience").height() * 2.5 + $("#projects").height() * 1.5 + $("#education").height() * 2 + $(window).height() / 2 - 85 })
+    .setPin("#mapDiv")
+    .addTo(controller);
+
+// Scene6 Handler
+new ScrollMagic.Scene({ triggerElement: "#trigger", duration: 0, offset: $("#workExperience").height() * 2.5 + $("#projects").height() * 1.5 + $("#education").height() * 2 + $(window).height() / 2 - 85 })
+    .setPin("#lets-connect")
+    .addTo(controller);
+
+// Add Scenes to ScrollMagic Controller
+controller.addScene([
+    scene,
+]);
