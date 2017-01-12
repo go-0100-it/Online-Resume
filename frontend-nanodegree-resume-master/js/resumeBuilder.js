@@ -402,7 +402,7 @@ controller.addScene([
 
 
 $(window).resize(function () {
-    scene.removePin();
+    scene.removePin("#header");
     scene.setPin("#header");
     scene2.duration($("#workExperience").height() * 1.5).offset($(window).height() / 2 - 110);
     scene3.duration($("#projects").height() * 0.5).offset($("#workExperience").height() * 2.5 + $(window).height() / 2 - 100);
