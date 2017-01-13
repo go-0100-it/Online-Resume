@@ -354,7 +354,7 @@ var scene = new ScrollMagic.Scene({
 var scene2 = new ScrollMagic.Scene({
         triggerElement: "#trigger",
         duration: $("#workExperience").height() * 1.5,
-        offset: $(window).height() / 2 - 110
+        offset: $(window).height() / 2 - 115 - ($("#name").height() - 40) - ($("#role").height() - 29)
     })
     .setPin("#workExperience")
     .addTo(controller);
@@ -363,7 +363,7 @@ var scene2 = new ScrollMagic.Scene({
 var scene3 = new ScrollMagic.Scene({
         triggerElement: "#trigger",
         duration: $("#projects").height() * 0.5,
-        offset: $("#workExperience").height() * 2.5 + $(window).height() / 2 - 95
+        offset: $("#workExperience").height() * 2.5 + $(window).height() / 2 - 100 - ($("#name").height() - 40) - ($("#role").height() - 29)
     })
     .setPin("#projects")
     .addTo(controller);
@@ -371,8 +371,8 @@ var scene3 = new ScrollMagic.Scene({
 //Scene4 Handler
 var scene4 = new ScrollMagic.Scene({
         triggerElement: "#trigger",
-        duration: $("#education").height(),
-        offset: $("#workExperience").height() * 2.5 + $("#projects").height() * 1.5 + $(window).height() / 2 - 88
+        duration: $("#education").height() + 300,
+        offset: $("#workExperience").height() * 2.5 + $("#projects").height() * 1.5 + $(window).height() / 2 - 95 - ($("#name").height() - 40) - ($("#role").height() - 29)
     })
     .setPin("#education")
     .addTo(controller);
@@ -381,7 +381,7 @@ var scene4 = new ScrollMagic.Scene({
 var scene5 = new ScrollMagic.Scene({
         triggerElement: "#trigger",
         duration: 0,
-        offset: $("#workExperience").height() * 2.5 + $("#projects").height() * 1.5 + $("#education").height() * 2 + $(window).height() / 2 - 88
+        offset: $("#workExperience").height() * 2.5 + $("#projects").height() * 1.5 + $("#education").height() * 2 + $(window).height() / 2 - 100 - ($("#name").height() - 44) - ($("#role").height() - 29) - ($("#topContacts").height() - 19) + 300
     })
     .setPin("#mapDiv")
     .addTo(controller);
@@ -390,7 +390,7 @@ var scene5 = new ScrollMagic.Scene({
 var scene6 = new ScrollMagic.Scene({
         triggerElement: "#trigger",
         duration: 0,
-        offset: $("#workExperience").height() * 2.5 + $("#projects").height() * 1.5 + $("#education").height() * 2 + $(window).height() / 2 - 88
+        offset: $("#workExperience").height() * 2.5 + $("#projects").height() * 1.5 + $("#education").height() * 2 + $(window).height() / 2 - 100 - ($("#name").height() - 40) - ($("#role").height() - 29) - ($("#topContacts").height() - 19) + 300
     })
     .setPin("#lets-connect")
     .addTo(controller);
@@ -404,10 +404,9 @@ controller.addScene([
 $(window).resize(function () {
     scene.removePin("#header");
     scene.setPin("#header");
-    scene2.duration($("#workExperience").height() * 1.5).offset($(window).height() / 2 - 110);
-    scene3.duration($("#projects").height() * 0.5).offset($("#workExperience").height() * 2.5 + $(window).height() / 2 - 100);
-    scene4.duration($("#education").height()).offset($("#workExperience").height() * 2.5 + $("#projects").height() * 1.5 + $(window).height() / 2 - 100);
-    scene5.duration(0).offset($("#workExperience").height() * 2.5 + $("#projects").height() * 1.5 + $("#education").height() * 2 + $(window).height() / 2 - 130);
-    scene6.duration(0).offset($("#workExperience").height() * 2.5 + $("#projects").height() * 1.5 + $("#education").height() * 2 + $(window).height() / 2 - 130);
+    scene2.duration($("#workExperience").height() * 1.5).offset($(window).height() / 2 - 110 - ($("#name").height() - 40) - ($("#role").height() - 29));
+    scene3.duration($("#projects").height() * 0.5).offset($("#workExperience").height() * 2.5 + $(window).height() / 2 - 100 - ($("#name").height() - 40) - ($("#role").height() - 29));
+    scene4.duration($("#education").height() + 300).offset($("#workExperience").height() * 2.5 + $("#projects").height() * 1.5 + $(window).height() / 2 - 100 - ($("#name").height() - 40) - ($("#role").height() - 29));
+    scene5.duration(0).offset($("#workExperience").height() * 2.5 + $("#projects").height() * 1.5 + $("#education").height() * 2 + $(window).height() / 2 - 130 - ($("#name").height() - 40) - ($("#role").height() - 29) - ($("#topContacts").height() - 19) + 300);
+    scene6.duration(0).offset($("#workExperience").height() * 2.5 + $("#projects").height() * 1.5 + $("#education").height() * 2 + $(window).height() / 2 - 130 - ($("#name").height() - 40) - ($("#role").height() - 29) - ($("#topContacts").height() - 19) +300);
   });
-
