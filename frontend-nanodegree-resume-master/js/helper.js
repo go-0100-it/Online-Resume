@@ -12,7 +12,7 @@ replace the %data% placeholder text you see in them.
 */
 var HTMLprependHeader = {
     name: '<h1 id="name">%data%</h1>',
-    role: '<span class="small-block">%data%</span><hr>'
+    role: '<span id="role" class="small-block">%data%</span><hr>'
 }
 
 var HTMLappendHeader = {
