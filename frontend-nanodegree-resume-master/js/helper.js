@@ -1,10 +1,10 @@
 /*
-These are the HTML strings used to create the detail section of the resume page. 
+These are the HTML strings used to create the detail section of the resume page. Must follow same schema as the contentData found in the resumeBuilder.js file.
 */
 var HTMLprependHeader = {
     name: '<h1 id="name">%data%</h1>',
     role: '<span id="role" class="small-block">%data%</span><hr>'
-}
+};
 
 var HTMLappendHeader = {
     contacts: {
@@ -17,7 +17,7 @@ var HTMLappendHeader = {
     welcomeMessage: '<span class="welcome-message">%data%</span>',
     skillsStart: '<h3 id="skills-h3">Skills at a Glance:</h3><ul id="skills" class="flex-column"></ul>',
     skills: '<li class="flex-item"><span class="white-text">%data%</span></li>'
-}
+};
 
 var HTMLwork = {
     jobs: [{
@@ -31,7 +31,7 @@ var HTMLwork = {
         location: '<div class="location-text">%data%</div>',
         description: '<p><br>%data%</p>'
     }]
-}
+};
 
 var HTMLprojects = {
     projects: [{
@@ -44,7 +44,7 @@ var HTMLprojects = {
         description: '<p><br>%data%</p>',
         images: '<img class="img-200x100" src="%data%">'
     }]
-}
+};
 
 var HTMLonlineClasses = '<h3 id="classes-h3">Online Classes</h3>';
 var HTMLeducation = {
@@ -69,7 +69,7 @@ var HTMLeducation = {
         dates: '<div class="date-text">%data%</div>',
         url: '<br><a href="#">%data%</a>'
     }]
-}
+};
 
 var googleMap = '<div id="map"></div>';
 
@@ -153,11 +153,6 @@ function initializeMap() {
             content: name
         });
 
-        // hmmmm, I wonder what this is about...
-        google.maps.event.addListener(marker, 'click', function() {
-            // your code goes here!
-        });
-
         // this is where the pin actually gets added to the map.
         // bounds.extend() takes in a map location object
         bounds.extend(new google.maps.LatLng(lat, lon));
@@ -211,10 +206,6 @@ function initializeMap() {
     pinPoster(locations);
 
 }
-
-/*
-Uncomment the code below when you're ready to implement a Google Map!
-*/
 
 // Calls the initializeMap() function when the page loads
 window.addEventListener('load', initializeMap);
