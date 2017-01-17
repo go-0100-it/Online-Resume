@@ -1,6 +1,7 @@
+// This code requires jQuery.js, velocity.js, scrollMagic.js and the following plug-ins to function correctly.
+// Plug-ins required are animation.gsap.js, animation.velocity.js, debug.addIndicators.js and jquery.ScrollMagic.js
 // Setting last sections height to be twice the size of the map section.
 $("#scroll-spacer").height($("#mapDiv").height() * 2);
-
 var myEl2height = $("#header").height();
 var elMarg = ($(window).height() - myEl2height) / 6;
 var myEl = $("#header-container");
@@ -34,7 +35,7 @@ var bio = {
         prependHTML(this, HTMLprependHeader, $("#header"));
         appendHTML(this, HTMLappendHeader, $("#header"));
     }
-}
+};
 
 // An Object literal defining the person's education.
 var education = {
@@ -99,7 +100,7 @@ var education = {
     "display": function() {
         appendHTML(this, HTMLeducation, $("#education"));
     }
-}
+};
 
 // An Object literal defining the person's work history
 var work = {
@@ -137,7 +138,7 @@ var work = {
     "display": function() {
         appendHTML(this, HTMLwork, $("#workExperience"));
     }
-}
+};
 
 // An Object literal defining the person's project history
 var projects = {
@@ -180,7 +181,7 @@ var projects = {
     "display": function() {
         appendHTML(this, HTMLprojects, $("#projects"));
     }
-}
+};
 
 /**
  * A function to loop over an objects properties and prepend the htmlStrings string after 
@@ -241,23 +242,23 @@ function objLoop(contentData, htmlStrings, pendElement) {
                 }
                 arrayLoop(contentData[key], htmlStrings[key], htmlStrings === HTMLappendHeader ? $("#skills") : pendElement);
 
-            // Checking if the property's value is an object, if it is then call the appendHTML function to loop the object.
+                // Checking if the property's value is an object, if it is then call the appendHTML function to loop the object.
             } else if (isObject(contentData[key])) {
                 appendHTML(contentData[key], htmlStrings[key], htmlStrings === HTMLappendHeader ? $("#topContacts") : pendElement);
 
-            // If the property's value is neither an array nor an object then modify the htmlStrings string and append it to the pendElement.
+                // If the property's value is neither an array nor an object then modify the htmlStrings string and append it to the pendElement.
             } else {
                 pendElement.append(htmlStrings[key].replace("%data%", contentData[key]));
             }
 
-        // If the contentData object does not have a property with the same name as the current key.
+            // If the contentData object does not have a property with the same name as the current key.
         } else {
 
             // If the contentData passed in is the bio object
             if (contentData === bio) {
                 pendElement.append(htmlStrings[key]);
 
-            // If the contentData passed in is not the bio object then call the createBulkEntry function to loop the object.
+                // If the contentData passed in is not the bio object then call the createBulkEntry function to loop the object.
             } else {
                 createBulkEntry(contentData, htmlStrings, pendElement);
             }
@@ -294,23 +295,23 @@ function appendHTML(contentData, htmlStrings, pendElement) {
                 }
                 arrayLoop(contentData[key], htmlStrings[key], htmlStrings === HTMLappendHeader ? $("#skills") : pendElement);
 
-            // Checking if the property's value is an object, if it is then call the appendHTML function to loop the object.
+                // Checking if the property's value is an object, if it is then call the appendHTML function to loop the object.
             } else if (isObject(contentData[key])) {
                 appendHTML(contentData[key], htmlStrings[key], htmlStrings === HTMLappendHeader ? $("#topContacts") : pendElement);
 
-            // If the property's value is neither an array nor an object then modify the htmlStrings string and append it to the pendElement.
+                // If the property's value is neither an array nor an object then modify the htmlStrings string and append it to the pendElement.
             } else {
                 pendElement.append(htmlStrings[key].replace("%data%", contentData[key]));
             }
 
-        // If the contentData object does not have a property with the same name as the current key.
+            // If the contentData object does not have a property with the same name as the current key.
         } else {
 
             // If the contentData passed in is the bio object
             if (contentData === bio) {
                 pendElement.append(htmlStrings[key]);
 
-            // If the contentData passed in is not the bio object then call the createBulkEntry function to loop the object.
+                // If the contentData passed in is not the bio object then call the createBulkEntry function to loop the object.
             } else {
                 createBulkEntry(contentData, htmlStrings, pendElement);
             }
@@ -336,7 +337,7 @@ function arrayLoop(contentData, htmlStrings, pendElement) {
         if (isObject(htmlStrings[i]) || isObject(contentData[i])) {
             createBulkEntry(contentData[i], htmlStrings[0], pendElement);
 
-        // If the elements value is not an object then modify the htmlStrings string and append it to the pendElement.
+            // If the elements value is not an object then modify the htmlStrings string and append it to the pendElement.
         } else {
             pendElement.append(htmlStrings.replace("%data%", contentData[i]));
         }
@@ -401,14 +402,14 @@ function createBulkEntry(contentData, htmlStrings, pendElement) {
         if (isArray(contentData[key])) {
             tempArray.push(bulkArrayLoop(contentData[key], htmlStrings[key]));
 
-        // Checking if the property's value is an object, if it is then call the splitLinkLoop function to loop the objects keys
-        // and push returned string to the tempArray.
+            // Checking if the property's value is an object, if it is then call the splitLinkLoop function to loop the objects keys
+            // and push returned string to the tempArray.
         } else if (isObject(htmlStrings[key])) {
             tempArray.push(splitLinkLoop(contentData, htmlStrings[key], pendElement));
             i++;
 
-        // If the property's value is neither an array nor an object then modify the htmlStrings string and push the resulting string to
-        // the tempArray.
+            // If the property's value is neither an array nor an object then modify the htmlStrings string and push the resulting string to
+            // the tempArray.
         } else {
             tempArray.push(htmlStrings[key].replace("%data%", contentData[key]));
         }
@@ -453,7 +454,9 @@ education.display();
 $("#mapDiv").append(googleMap);
 
 // init ScrollMagic Controller
-var controller = new ScrollMagic.Controller({refreshInterval: 0.1});
+var controller = new ScrollMagic.Controller({
+    refreshInterval: 0.1
+});
 var halfWindow;
 var nHeight;
 var rHeight;
@@ -463,7 +466,7 @@ var scene3Height;
 var scene4Height;
 
 // A function to set height variables
-function setHeights(){
+function setHeights() {
     halfWindow = $(window).height() / 2;
     nHeight = $("#name").height() - 40;
     rHeight = $("#role").height() - 29;
@@ -508,6 +511,7 @@ var scene = new ScrollMagic.Scene({
         triggerHook: 0, // don't trigger until #pinned-trigger1 hits the top of the viewport
     })
     .setPin("#header") // the element we want to pin
+    .addTo(controller);
 
 // Scene2 Handler
 var scene2 = new ScrollMagic.Scene({
@@ -554,13 +558,8 @@ var scene6 = new ScrollMagic.Scene({
     .setPin("#lets-connect")
     .addTo(controller);
 
-// Add Scenes to ScrollMagic Controller
-controller.addScene([
-    scene
-]);
-
-
-$(window).resize(function () {
+// Recalculating scene values when viewport is resized. Then resetting scenes.
+$(window).resize(function() {
     setHeights();
     scene.removePin("#header");
     scene.setPin("#header");
@@ -568,5 +567,5 @@ $(window).resize(function () {
     scene3.duration($("#projects").height() * 0.5).offset(scene2Height + halfWindow - 100 - nHeight - rHeight);
     scene4.duration($("#education").height() + 300).offset(scene2Height + scene3Height + halfWindow - 100 - nHeight - rHeight);
     scene5.duration(0).offset(scene2Height + scene3Height + scene4Height + halfWindow - 130 - nHeight - rHeight - tCHeight + 300);
-    scene6.duration(0).offset(scene2Height + scene3Height + scene4Height + halfWindow - 130 - nHeight - rHeight - tCHeight +300);
-  });
+    scene6.duration(0).offset(scene2Height + scene3Height + scene4Height + halfWindow - 130 - nHeight - rHeight - tCHeight + 300);
+});
